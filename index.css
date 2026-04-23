@@ -1,0 +1,30 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Donate from "./pages/Donate";
+
+export default function App() {
+  const isLoggedIn = localStorage.getItem("user");
+
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Login />}
+        />
+
+        <Route
+          path="/donate"
+          element={isLoggedIn ? <Donate /> : <Login />}
+        />
+
+      </Routes>
+    </BrowserRouter>
+  );
+}
