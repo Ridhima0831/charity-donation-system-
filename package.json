@@ -1,29 +1,15 @@
-import axios from "axios";
-import { useState } from "react";
-
-export default function Signup() {
-  const [data, setData] = useState({});
-
-  const handle = e => setData({...data, [e.target.name]: e.target.value});
-
-  const submit = async () => {
-    if (!data.email || !data.password) {
-      alert("Fill all fields");
-      return;
-    }
-
-    await axios.post("http://127.0.0.1:5000/api/auth/register", data);
-    alert("Signup success");
-    window.location.href = "/login";
-  };
-
-  return (
-    <div className="container">
-      <h2>Signup</h2>
-      <input name="name" placeholder="Name" onChange={handle}/>
-      <input name="email" placeholder="Email" onChange={handle}/>
-      <input name="password" placeholder="Password" onChange={handle}/>
-      <button onClick={submit}>Signup</button>
-    </div>
-  );
+{
+  "name": "charity-donation-system",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "5.0.1",
+    "axios": "^1.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
 }
